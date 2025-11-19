@@ -83,6 +83,7 @@ GUI:
 ---
 
 ## 🧠 AI Pipeline Summary
+```mermaid
 flowchart TD
     A[256×3 Accelerometer Window] --> B[NEAI Preprocessing]
     B --> C[NanoEdge AI Model]
@@ -92,6 +93,7 @@ flowchart TD
     F --> G{5 Consecutive?}
     G -- Yes --> H[Trigger Alert]
     G -- No --> A
+```
 
 ---
 
