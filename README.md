@@ -36,7 +36,7 @@ flowchart LR
     USB --> GUI[Python Real-Time GUI]
     GUI --> User[User]
 
----
+
 
 ## 📦 Key Components
 1. Embedded Data Acquisition (STM32H5)
