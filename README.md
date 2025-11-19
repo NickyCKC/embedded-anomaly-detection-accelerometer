@@ -100,6 +100,7 @@ flowchart TD
 The device sent both:
 - Printable log messages
 - Binary frames of float32 values
+
 🛠️ **Solution:**
 Implemented a custom streaming parser with a persistent bytearray buffer that detects:
 - Binary header 0xAA55
@@ -111,6 +112,7 @@ Issues:
 - Flash checksum mismatches
 - Relearning triggers
 - Handling long button-press events
+
 🛠️ **Solution:**
 - Implemented debounced long/short press logic
 - Added CRC-based flash validation
@@ -118,6 +120,7 @@ Issues:
 
 3. **Real-Time Visualization Performance**
 Plotting 768 float samples every 100 ms.
+
 🛠️ **Optimizations:**
 - Reused Matplotlib line objects
 - Avoided figure redraw
@@ -134,11 +137,13 @@ Plotting 768 float samples every 100 ms.
 - USB CDC data streaming
 - Flash memory operations
 - C programming + RTOS thread model
+
 **AI / Data**
 - Edge ML (NanoEdge AI)
 - Vibration signal processing
 - Similarity-based anomaly detection
 - Dataset preparation & learning phase design
+
 **Software / Tools**
 - Python Tkinter GUI
 - Matplotlib real-time plotting
