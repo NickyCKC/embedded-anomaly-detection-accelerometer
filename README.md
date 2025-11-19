@@ -34,8 +34,8 @@ flowchart LR
     MCU --> AI[NanoEdge AI Anomaly Model]
     AI --> USB[USB CDC Data Stream]
     USB --> GUI[Python Real-Time GUI]
-    GUI --> User[User]```
-
+    GUI --> User[User]
+```
 
 
 ## 📦 Key Components
