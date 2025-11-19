@@ -37,9 +37,10 @@ flowchart LR
     GUI --> User[User]
 ```
 
+---
 
 ## 📦 Key Components
-1. Embedded Data Acquisition (STM32H5)
+1. **Embedded Data Acquisition (STM32H5)**
 - Configured ISM330DHCX accelerometer at ~1.6 kHz sampling
 - Enabled FIFO streaming mode
 - Captured 256-sample sliding windows across 3 axes
@@ -47,22 +48,22 @@ flowchart LR
 - Forwarded formatted float32 arrays via USB CDC in a custom binary frame:
 [ 0xAA, 0x55, <payload of 256×3 float32> ]
 
-2. On-Device Anomaly Detection (NanoEdge AI)
+2. **On-Device Anomaly Detection (NanoEdge AI)**
 Implemented two modes:
 
-🔹 Learning Mode
+🔹 **Learning Mode**
 - Collects reference “normal” vibration signatures
 - Builds the feature space into internal NEAI knowledge buffer
 - Flash storage used to store learned knowledge
 - Automatic “relearn” triggers when checksum mismatch detected
 
-🔹 Detection Mode
+🔹 **Detection Mode**
 - Processes each buffer through NEAI
 - Produces similarity score (0–100)
 - Detects anomalies based on similarity threshold
 - Performs consecutive anomaly counting (e.g., 5 in a row → alert)
 
-3. PC Real-Time Visualization GUI (Python)
+3. **PC Real-Time Visualization GUI (Python)**
 Developed a Tkinter + Matplotlib GUI that:
 - Connects over USB CDC COM port
 - Visualizes real-time 3-axis accelerometer waveforms
@@ -95,29 +96,29 @@ flowchart TD
 ---
 
 ## 🛠️ Engineering Challenges & Solutions
-1. Handling Mixed Binary + Text Serial Data
+1. **Handling Mixed Binary + Text Serial Data**
 The device sent both:
 - Printable log messages
 - Binary frames of float32 values
-🛠️ Solution:
+🛠️ **Solution:**
 Implemented a custom streaming parser with a persistent bytearray buffer that detects:
 - Binary header 0xAA55
 - Complete float payload frames
 - Text log lines separated by newline
 
-2. Ensuring Stable Learn/Detect Switching
+2. **Ensuring Stable Learn/Detect Switching**
 Issues:
 - Flash checksum mismatches
 - Relearning triggers
 - Handling long button-press events
-🛠️ Solution:
+🛠️ **Solution:**
 - Implemented debounced long/short press logic
 - Added CRC-based flash validation
 - Auto-relearn mode with visual feedback (LED & GUI)
 
-3. Real-Time Visualization Performance
+3. **Real-Time Visualization Performance**
 Plotting 768 float samples every 100 ms.
-🛠️ Optimizations:
+🛠️ **Optimizations:**
 - Reused Matplotlib line objects
 - Avoided figure redraw
 - Used .set_data() for high FPS
@@ -126,19 +127,19 @@ Plotting 768 float samples every 100 ms.
 ---
 
 ## 🧰 Skills Demonstrated
-Firmware / Embedded
+**Firmware / Embedded**
 - I2C driver integration
 - FIFO management
 - DMA-like high-frequency sampling
 - USB CDC data streaming
 - Flash memory operations
 - C programming + RTOS thread model
-AI / Data
+**AI / Data**
 - Edge ML (NanoEdge AI)
 - Vibration signal processing
 - Similarity-based anomaly detection
 - Dataset preparation & learning phase design
-Software / Tools
+**Software / Tools**
 - Python Tkinter GUI
 - Matplotlib real-time plotting
 - Serial COM data parsing
